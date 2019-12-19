@@ -4,14 +4,17 @@
 
  - 数据库分布式核心内容无非就是数据切分（Sharding），以及切分后对数据的定位、整合。数据切分就是将数据分散存储到多个数据库中，使得单一数据库中的数据量变小，通过扩充主机的数量缓解单一数据库的性能问题，从而达到提升数据库操作性能的目的。
 
-
   ![](https://upload-images.jianshu.io/upload_images/325120-e2cac4e2b087402c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200)
+
+![325120-e2cac4e2b087402c](325120-e2cac4e2b087402c.jpg)
+
+
 
  - 数据切分根据其切分类型，可以分为两种方式：
 
      - **垂直（纵向）切分**：垂直分库就是根据业务耦合性，将关联度低的不同表存储在不同的数据库。
      - **水平（横向）切分**：水平切分分为库内分表和分库分表，是根据表内数据内在的逻辑关系，将同一个表按不同的条件分散到多个数据库或多个表中，每个表中只包含一部分数据，从而使得单个表的数据量变小，达到分布式的效果。
-   
+
 
 **垂直分表**是基于数据库中的"列"进行，某个表字段较多，可以新建一张扩展表，将不经常用或字段长度较大的字段拆分出去到扩展表中。在字段很多的情况下（例如一个大表有100多个字段），通过"大表拆小表"，更便于开发与维护，也能避免跨页问题，MySQL底层是通过数据页存储的，一条记录占用空间过大会导致跨页，造成额外的性能开销。
 
@@ -111,7 +114,11 @@ CREATE TABLE `user_x` (
 
 ![](https://upload-images.jianshu.io/upload_images/325120-4e46e9bc41e43717.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
+![325120-4e46e9bc41e43717](325120-4e46e9bc41e43717.png)
+
 ![](https://upload-images.jianshu.io/upload_images/325120-71c5b5613544fd39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
+
+![325120-71c5b5613544fd39](325120-71c5b5613544fd39.png)
 
 ##2、pom.xml配置
 
@@ -219,13 +226,21 @@ mybatis.configuration.cache-enabled=false
 
 ![](https://upload-images.jianshu.io/upload_images/325120-43d33d2962c6f7ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
+![325120-43d33d2962c6f7ca](325120-43d33d2962c6f7ca.png)
+
 ##3、接口调用
 
 ![](https://upload-images.jianshu.io/upload_images/325120-3168b0445d78de88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
+
+![325120-3168b0445d78de88](325120-3168b0445d78de88.png)
 
 ##4、数据库表现
 
 ![](https://upload-images.jianshu.io/upload_images/325120-84b86b231fb61bca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
+![325120-84b86b231fb61bca](325120-84b86b231fb61bca.png)
+
 ![](https://upload-images.jianshu.io/upload_images/325120-7e7d117d30a2b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
+
+![325120-7e7d117d30a2b2be](325120-7e7d117d30a2b2be.png)
 
