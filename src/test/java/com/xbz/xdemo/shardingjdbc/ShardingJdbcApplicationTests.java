@@ -1,16 +1,17 @@
 package com.xbz.xdemo.shardingjdbc;
 
-import com.alibaba.fastjson.JSON;
-import com.xbz.xdemo.shardingjdbc.entity.User;
-import com.xbz.xdemo.shardingjdbc.service.UserService;
+import java.util.Date;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
-import java.util.List;
+import com.alibaba.fastjson.JSON;
+import com.xbz.xdemo.shardingjdbc.entity.User;
+import com.xbz.xdemo.shardingjdbc.service.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -46,7 +47,7 @@ public class ShardingJdbcApplicationTests {
 
     /** 强制主库读取测试 */
     @Test
-    public void test3(){
+    public void test3() {
         User user = new User();
         user.setUserId(100L);
         List<User> list = userService.selectSelectiveMaster(user);
@@ -73,7 +74,7 @@ public class ShardingJdbcApplicationTests {
 
     /** 从库查询时不带分表规则字段 , 会全量查询 */
     @Test
-    public void test6(){
+    public void test6() {
         User user = new User();
         user.setPassword("111111");
         List<User> userList = userService.selectSelective(user);
